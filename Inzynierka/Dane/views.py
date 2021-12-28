@@ -25,7 +25,7 @@ from django.shortcuts import render
 def home(request):
     return render(
         request,
-        'Dane/index.html',
+        'Dane/home.html',
         {
             'title': "Home",
         }
@@ -54,7 +54,7 @@ def dashboard(request):
         request,
         'Dane/dashboard.html',
         {
-            'title': "Dashboard",
+            'title': "O projekcie",
         }
     )
 

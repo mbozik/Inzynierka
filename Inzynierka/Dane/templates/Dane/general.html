@@ -2,9 +2,10 @@
 {% load static %}
 <title>{{ title }}</title>
 {% block content  %}
-        <div id="mid">
-                <h1> Generalna analiza</h1>
-                <img src="{% static 'images/heat_map.png' %}">
+        <div id="gen_mid">
+                <div id="gen_head" ><h2> Generalna analiza</h2></div>
+                <img class="heat" src="{% static 'images/heat_map.png' %}">
+                <div id="gen_text"> TEST TEST TEST TEST</div>
                 <img src="{% static 'images/Kontrola.png' %}">
                 <img src="{% static 'images/pozycje.png' %}">
         </div>
