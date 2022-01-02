@@ -20,8 +20,12 @@ from IPython.display import HTML
 df = pad.read_csv (r'D:\Studia\Praca inżynierska\players_20.csv')
 
 
+
 columns = df.columns
 abilities = []
+
+# df.hist(bins=40, figsize=(27,17))
+# plt.show()
 
 # Przekazanie nazw kolumn do listy abilities
 for i in columns:
@@ -35,20 +39,28 @@ for i in values.columns:
     df[i].fillna(df[i].mean(),inplace = True)
 # Plot dla wzrostu
 
+
+# sea.pairplot(df[['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physic']])
+# plt.show()
 # print(df.isnull().sum())
 
-plt.figure(figsize=(20,8))
-ax = sea.countplot(x='height_cm',data=df)
+# plt.figure(figsize=(20,8))
+# ax = sea.countplot(x='height_cm',data=df)
 # plt.show()
 
+#Extract DDG's information, just like we did with the team name before
+DDG = df[df['short_name'] == 'De Gea'][['short_name','wage_eur','value_eur','player_positions','overall','age']]
 
+#Assign DDG's wage, position, rating and age to variables
+DDGWage = DDG['wage_eur'].item()
+DDGPos = DDG['player_positions'].item()
+DDGRating = DDG['overall'].item()
+DDGAge = DDG['age'].item()
 
 #Wpisanie do MU wszystkich zawodników manchesteru united
-MU = df[df.club == "Manchester United"]
-# print(MU)
+MU = df[df.club == "Roma"]
+print(MU)
 
-# MU_firsteleven=data[MU.team_position[]]
-# print(MU.team_position.notna)
 
 MU_firstEleven = MU.loc[MU['player_positions']!='RES']
 #Wypisanie pomocników z głównej jedenastki Manchesteru United

@@ -1,0 +1,27 @@
+{% extends 'Dane/index.html' %}
+{% load static %}
+
+
+   <title>{{ title }}</title>
+
+{% block content  %}
+
+
+<div id="gen_head" style="margin-bottom:0.5%;" ><h2>Legia Warszawa</h2><p><!--Lista zawodników oraz spider plot--></p></div>
+<div style="height: 575px; margin-bottom: 1%;"><div id="clubs_main_le">
+  {{ html|safe }}
+</div>
+   <div id="clubs_main_down">  <img src="{% static 'images/le.png' %}"></img> <div id="club_sp_d"><p>Spider plot statystyk drużyny Legii Warszawa</p>
+        </div>
+   </div>
+    </div>
+ <div id="cl_down">
+       <p>Wypisanie i posortowanie składu na podstawie zarobków zawodników pozwoliło ujawnić najlepiej opłacanych zawodników w drużynie. <br> Dzięki temu wybieramy trzech najlepiej zarabiających zawodników i próbujemy przeanalizować jacy są dostępni lepsi zawodnicy na ich pozycji, pobierający mniejsze gaże. </p>
+
+ </div>
+
+     <div id="cl_down_d"><h4>Propozycje zawodników i ich zastępstw</h4> <div id="cl_1">{{ z|safe }} {{ p|safe }} </div><div id="cl_2">{{ z2|safe }} {{ p2|safe }} </div><div id="cl_3">{{ z3|safe }} {{ p3|safe }}</div>
+
+     </div>
+{% endblock %}
+

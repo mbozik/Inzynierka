@@ -5,7 +5,8 @@ urlpatterns = [
     path('', views.home),
     path('general/', views.general),
     path('clubs/', views.clubs),
-    path('dashboard/', views.dashboard),
+    path('legia/', views.legia),
+    path('manchester/', views.manchester),
+    path('roma/', views.roma),
     path('contact/', views.contact),
-    path('table/', views.table, name ="table"),
 ]
