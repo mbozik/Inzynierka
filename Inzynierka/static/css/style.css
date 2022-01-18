@@ -101,15 +101,14 @@ width:100px;
     padding-top:0;
     transform: skew(-30deg);
 }
-#gen_mid img{
-    width:80%;
-}
 .heat{
     margin-top:1%;
    margin-left:5%;
-   width:90%;
+   width:95%;
 }
-
+.hm img{
+width:100%;
+}
 /* Dashboard */
 
 #dashboard{
@@ -359,7 +358,9 @@ width:150px;
 text-align:left;
 width:90px;
 }
-
+table{
+font-size: 12px;
+}
 #clubs_main_le th:nth-child(n+1){
 background-color:#1B1B1B;
 }
@@ -394,6 +395,7 @@ margin-bottom: 0px;
     width: 50%;
     margin-left: 0;
     float: right;
+    margin-top: 3%;
 }
 #clubs_main_down img{
     margin: 0 auto;
@@ -435,6 +437,7 @@ margin-bottom: 0px;
     transform: skew(30deg);
   margin:auto auto;
   left:0;
+  margin-top:2%;
   right:0;
   padding:3%;
   top: 0;
@@ -447,16 +450,17 @@ margin-bottom: 0px;
     margin-bottom:0;
 }
 #cl_down_d{
-    width:80%;
+    width: 80%;
     margin: 0 auto;
-    margin-top:2%;
+    height: 308px;
+    margin-top: 2%;
 }
 #cl_down_d table{
-float:left;
-margin:1%;
+    float:left;
+    margin:1%;
     background-color: #343a40;
     border: black 1px solid;
-
+    font-size: 18px;
  }
  #cl_down_d h4{
  text-align:center;
@@ -478,3 +482,167 @@ margin-top:2%;
 margin-left:1%;
 margin-top:2%;
 }
+
+#club_pred{
+    text-align:justify;
+    background-color:#1B1B1B;
+    border:solid 1px black;
+    width:80%;
+/*    margin-left:35%;
+    margin-top:1%;*/
+    border-bottom-width:4px;
+  margin:auto auto;
+  left:0;
+  margin-top:2%;
+  right:0;
+  padding:3%;
+  top: 0;
+  bottom:0;
+    margin: 0 auto;
+    text-align: center;
+    width: 60%;
+    margin-bottom:2%;
+}
+
+#club_pred table{
+margin:0 auto;
+font-size: 16px;
+}
+
+#gen_panel{
+margin:0 auto;
+width:20%;
+padding:3%;
+}
+#gen_panel .counter{
+text-align:center;
+font-size:32px;
+}
+#gen_panel p{
+margin:0 auto;
+font-size:14px;
+text-align:center;
+}
+#gen_pan_d{
+    margin: 0 auto;
+    width: 100%;
+    padding: 3%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+
+}
+
+#gen_pan_d p{
+    padding:2%;
+    margin:0 auto;
+}
+.hm{
+    width:80%;
+    margin:0 auto;
+}
+.hm_2{
+    width:100%;
+    margin:0 auto;
+}
+.hm_2 img{
+width:100%;
+}
+.tit_gen2{
+text-align:center;
+margin:0 auto;
+font-size:24px;
+}
+.hm_o{
+    text-align: center;
+    background-color: #1B1B1B;
+    border: solid 1px black;
+    width: fit-content;
+    margin:0 auto;
+    left: 0;
+    margin-bottom: 2%;
+    padding:1%;
+    right: 0;
+    margin-top:3%;
+    top: 0;
+    bottom: 0;
+    }
+
+
+#gen_pan_d2{
+margin:0 auto;
+width:70%;
+padding:3%;
+}
+
+#gen_pan_d2 p{
+    padding:2%;
+    margin:0 auto;
+}
+#gen_text{
+    height: 650px;
+    margin:0 auto;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom:4%;
+    }
+
+#gen_text p{
+text-align:center;
+}
+#d_but{
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom:2%;
+}
+#click{
+    width: 150px;
+    height: 50px;
+    padding: 2%;
+    margin: 0 auto;
+    border: solid black 1px;
+    margin-bottom:2%;
+    }
+#click:active{
+    width: 850px;
+     height: 480px;
+    position: absolute;
+    left: 27%;
+    border:solid;
+    background-image: url(../images/noga.png);
+}
+
+#click:focus{
+    width: 850px;
+     height: 480px;
+    position: absolute;
+    left: 27%;
+    border:solid;
+    background-image: url(../images/noga.png);
+}
+#click:target{
+    width: 850px;
+     height: 480px;
+    position: absolute;
+    left: 27%;
+    border:solid;
+    background-image: url(../images/noga.png);
+}
+#click:focus-within{
+    width: 850px;
+     height: 480px;
+    position: absolute;
+    left: 27%;
+    border:solid;
+    background-image: url(../images/noga.png);
+}
+#click:focus-visible{
+    width: 850px;
+     height: 480px;
+    position: absolute;
+    left: 27%;
+    border:solid;
+    background-image: url(../images/noga.png);
+}
+

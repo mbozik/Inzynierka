@@ -7,7 +7,7 @@
 {% block content  %}
 
 <div id="gen_head"><h2> Manchester City</h2><p></p></div>
-<div style="height: 600px; margin-bottom: 1%;">
+<div style="    height: 600px; margin: 0 auto; width: 80%; margin-bottom: 1%;">
 <div id="clubs_main_ba">
   {{ html|safe }}
 </div>
@@ -16,12 +16,17 @@
    </div>
        </div>
  <div id="cl_down">
-       <p>Wypisanie i posortowanie składu na podstawie zarobków zawodników pozwoliło ujawnić najlepiej opłacanych zawodników w drużynie. <br> Dzięki temu wybieramy trzech najlepiej zarabiających zawodników i próbujemy przeanalizować jacy są dostępni lepsi zawodnicy na ich pozycji, pobierający mniejsze gaże. </p>
+       <p>Wypisanie i posortowanie składu na podstawie zarobków zawodników pozwoliło ujawnić najlepiej opłacanych zawodników w drużynie. <br> Dzięki temu wybieramy trzech najlepiej zarabiających zawodników i próbujemy przeanalizować jacy są dostępni podobni zawodnicy na ich pozycji, pobierający mniejsze gaże. </p>
 
  </div>
-   <div>
+   <div style="height:300px; margin-top:2%;">
      <div id="cl_down_d"><h4>Propozycje zawodników i ich zastępstw</h4> <div id="cl_1">{{ z|safe }} {{ p|safe }} </div><div id="cl_2">{{ z2|safe }} {{ p2|safe }} </div><div id="cl_3">{{ z3|safe }} {{ p3|safe }}</div></div>
   </div>
+
+       </div>   <div id="club_pred"><p style="text-align:justify;">Następnie dzięki stworzonemu modelowi predykcji, próbujemy przewidzieć wartość zawodników na podstawie ich umiejętności. <br>Poniżej widzimy liste zawodników Manchesteru City z obliczonymi przewidywanymi wartościami zawodników</p>
+      {{ mc|safe }}</div></div>
+
+    <div style="height:25px;"><hr></div>
 {% endblock %}
 
 

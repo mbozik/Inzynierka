@@ -1,14 +1,33 @@
 {% extends 'Dane/index.html' %}
 {% load static %}
+<script src="{% static 'js/script.js' %}"></script>
+
 <title>{{ title }}</title>
 {% block content  %}
         <div id="gen_mid">
                 <div id="gen_head" ><h2> Generalna analiza</h2></div>
-                <img class="heat" src="{% static 'images/heat_map2.png' %}">
-                <div id="gen_text"> TEST TEST TEST TEST</div>
-                <img src="{% static 'images/Kontrola.png' %}">
-                <img src="{% static 'images/pozycje.png' %}">
-                <img src="{% static 'images/plots.png' %}">
+                <div id="gen_panel">
+                    <div>
+					    <div class="counter" data-target="1048576">0</div>
+					    <p>Liczba zawodników w grze Fifa</p>
+                    </div>
+                </div>
+                <div id="gen_pan_d">
+                       <div class="hm_o" style="width:40%;"> <p>Heat mapa przedstawiająca zależności między statystykami zawodników</p></div>
+                        <div class="hm"><img src="{% static 'images/heat_map.png' %}"></div>
+                        <div class="hm_o"> <p>Powyższe grafika jest heat mapą, która przedstawia relacje między właściwościami atrybutów piłkarzy.<br> Pozwala ona zauważyć, że statystyki bramkarzy są silnie ze sobą skorelowane. zmienić<br> Reszta statystyk nie jest aż tak mocno ze sobą powiązana, jeżeli tak jest to są to raczej małe grupy statystyk.</p> </div>
+                </div>
+               <div id="gen_pan_d2">
+                        <p class="tit_gen2">Top 10 najlepszych drużyn w grze</p>
+                        <div class="hm_2"><img src="{% static 'images/best.png' %}"></div>
+                        <div class="hm_o"> <p>Powyższe grafika przedstawia 10 najlepszych drużyn w grze Fifa 20 na podstawie średniej wyliczonej z ocen wszystkich zawodników w kadrze.</p> </div>
+                </div>
+
+
+                <div id="gen_text">
+                    <p>Ciekawostka. <br>Jakich zawodników jest więcej? Prawo czy lewo nożnych. <br>Kliknij aby się dowiedzieć.</p>
+                    <div id="d_but"><button id="click" class="btn btn-dark">CLICK</button></div>
+                    </div>
 
         </div>
 {% endblock %}

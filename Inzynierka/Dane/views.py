@@ -34,6 +34,7 @@ def roma(request):
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Roma')
+    df['value_eur'] = (df["value_eur"] / 1e6).round(2).astype(str) + " M Euro"
 
     def rename(data):
         data.rename(columns={'short_name': 'Nazwa zawodnika'}, inplace=True)
@@ -108,6 +109,13 @@ def roma(request):
     z3=z3.to_html
     p3=p3.to_html
 
+    roma = pad.read_csv('static/data/roma.csv')
+    roma.rename(columns={'actual_value': 'Rzeczywista wartość'}, inplace=True)
+    roma.rename(columns={'Model prediction': 'Przewidywana wartość'}, inplace=True)
+    rename(roma)
+    roma = roma.sort_values('Zarobki', ascending=False)
+    roma = roma.to_html
+
     html = df.sort_values("Zarobki", ascending = False).to_html
     return render(
         request,
@@ -121,6 +129,7 @@ def roma(request):
             'p2': p2,
             'z3': z3,
             'p3': p3,
+            'roma': roma,
         }
     )
 
@@ -132,6 +141,7 @@ def manchester(request):
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Manchester City')
+    df['value_eur'] = (df["value_eur"] / 1e6).round(2).astype(str) + " M Euro"
 
     def rename(data):
         data.rename(columns={'short_name': 'Nazwa zawodnika'}, inplace=True)
@@ -206,6 +216,12 @@ def manchester(request):
     z3=z3.to_html
     p3=p3.to_html
 
+    mc = pad.read_csv('static\data\mc.csv')
+    rename(mc)
+    mc = mc.sort_values('Zarobki', ascending=False)
+
+    mc = mc.to_html
+
     html = df.sort_values("Zarobki", ascending = False).to_html
     return render(
         request,
@@ -219,6 +235,7 @@ def manchester(request):
             'p2': p2,
             'z3': z3,
             'p3': p3,
+            'mc': mc,
         }
     )
 
@@ -230,6 +247,8 @@ def legia(request):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Legia Warszawa')
 
+    df['value_eur'] = (df["value_eur"] / 1e6).round(2).astype(str) + " M Euro"
+
     def rename(data):
         data.rename(columns={'short_name': 'Nazwa zawodnika'}, inplace=True)
         data.rename(columns={'wage_eur': 'Zarobki'}, inplace=True)
@@ -237,7 +256,6 @@ def legia(request):
         data.rename(columns={'player_positions': 'Pozycje'}, inplace=True)
         data.rename(columns={'overall': 'Overall'}, inplace=True)
         data.rename(columns={'age': 'Wiek'}, inplace=True)
-        return data
 
     def cheapReplacement(player, skillReduction=0):
         replacee = data[data['short_name'] == player][
@@ -272,6 +290,10 @@ def legia(request):
 
     z=z['Nazwa zawodnika']
 
+    legia  = pad.read_csv('static\data\legia.csv')
+    legia = legia.sort_values('Zarobki', ascending=False)
+    rename(legia)
+    legia=legia.to_html
 
     p=cheapReplacement(z)
 
@@ -313,6 +335,7 @@ def legia(request):
             'p2': p2,
             'z3': z3,
             'p3': p3,
+            'legia' : legia,
         }
     )
 
