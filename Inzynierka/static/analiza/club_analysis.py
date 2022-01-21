@@ -17,7 +17,7 @@ matplotlib.rcParams['figure.facecolor'] = '#00000000'
 from IPython.display import HTML
 
 """ Stworzenie data frame'u zawierającego statystyki zawodników z gry Fifa 20"""
-df = pad.read_csv (r'D:\Studia\Praca inżynierska\players_20.csv')
+df = pad.read_csv (r'../data/players_20.csv')
 
 
 

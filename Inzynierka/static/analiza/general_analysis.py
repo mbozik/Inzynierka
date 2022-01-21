@@ -3,6 +3,7 @@ import pandas as pad
 import matplotlib.pyplot as plt
 import pandas as pad
 import seaborn as sea
+import numpy as np
 
 pad.set_option('display.max_rows',None)
 pad.set_option('display.max_columns',None)
@@ -11,18 +12,17 @@ sea.set_style('darkgrid')
 matplotlib.rcParams['font.size'] = 5
 matplotlib.rcParams['figure.facecolor'] = '#00000000'
 
-""" Stworzenie data frame'u zawierającego statystyki zawodników z gry Fifa 19"""
-df= pad.read_csv (r'D:\Studia\Praca inżynierska\players_20.csv')
+""" Stworzenie data frame'u zawierającego statystyki zawodników z gry Fifa 20"""
+df= pad.read_csv (r"D:\Studia\Praca inżynierska\test\players_20.csv", index_col=[0])
 
-highest_overall_club = df.groupby('club').overall.mean().reset_index().sort_values(by='overall', ascending=False)
+highest_overall_club = df.groupby('Club').Overall.mean().reset_index().sort_values(by='Overall', ascending=False)
 highest_overall_club
 
 
 #Zamiana kilku pozycji zawodnika na jedna wartosc
-df['player_positions']=df['player_positions'].str.split(pat=',', n=-1, expand=True)[0]
+# df['Player positions']=df['Player positions'].str.split(pat=',', n=-1, expand=True)[0]
 
-
-
+df.fillna(0)
 
 # top10_clubs = highest_overall_club.head(10)
 # plt.figure(figsize = (10,5))
@@ -31,9 +31,8 @@ df['player_positions']=df['player_positions'].str.split(pat=',', n=-1, expand=Tr
 
 
 #Usunięcie niepotrzebnych kolumn
-df.drop(columns = ['real_face', 'loaned_from'], inplace = True)
+df.drop(columns = ['Real Face', 'Loaned From'], inplace = True)
 df.head()
-
 
 columns = df.columns
 abilities = []
@@ -48,15 +47,21 @@ for i in columns:
 #Sprawdzenie czy są jakieś brakujące Dane
 missing_data = pad.isna(df.columns).sum()
 missing_data
+print(df.isnull().sum())
+matplotlib.rcParams.update({'font.size': 6})
 
-# #Stworzenie heatmapy prezentującej korelacje pomiędzy statystykami zawodników
-# plt.figure(figsize = (25, 25))
-# sea.heatmap(df.corr(), annot = True, fmt = '.1f')
-# plt.title("Korelacja pomiędzy statystykami zawodników")
-# # plt.show()
-# #Widać największą korelacje w parametrach bramkarzy .
-#
+
+
+
+#Stworzenie heatmapy prezentującej korelacje pomiędzy statystykami zawodników
+plt.figure(figsize = (25, 35))
+sea.heatmap(df.corr(), annot = True, fmt = '.1f')
+plt.title("Korelacja pomiędzy statystykami zawodników")
+plt.show()
+#Widać największą korelacje w parametrach bramkarzy .
+
 matplotlib.rcParams.update({'font.size': 10})
+
 
 
 # plt.figure(figsize= (20, 15))
@@ -99,7 +104,7 @@ matplotlib.rcParams.update({'font.size': 10})
 
 # print(df["player_positions"])
 # print(dict.fromkeys(df["player_positions"]))
-print(len(df["player_positions"].drop_duplicates()))
+# print(len(df["player_positions"].drop_duplicates()))
 
 # stworzony podział na 4 grupy pozycji
 
@@ -107,25 +112,25 @@ print(len(df["player_positions"].drop_duplicates()))
 
 df["value_eur"]=(df["value_eur"]/1e6).round(2)
 
-# Wykres wartości względem pozycji na boisku
-plt.figure(figsize=(22,8))
-plt.title("Porównanie wartości względem pozycji na boisku", fontsize=20)
-ac = sea.barplot(x='player_positions',y='value_eur', data=df.sort_values('value_eur'), color='steelblue')
-plt.xlabel("Pozycja zawodnika", fontsize=16)
-plt.ylabel("Średnia wartość zawodnika w milionach euro", fontsize=16)
-plt.show()
+# # Wykres wartości względem pozycji na boisku
+# plt.figure(figsize=(22,8))
+# plt.title("Porównanie wartości względem pozycji na boisku", fontsize=20)
+# ac = sea.barplot(x='Player Positions',y='Value_eur', data=df.sort_values('value_eur'), color='steelblue')
+# plt.xlabel("Pozycja zawodnika", fontsize=16)
+# plt.ylabel("Średnia wartość zawodnika w milionach euro", fontsize=16)
+# # plt.show()
 
 
 # Wykres wartości względem umiejętności
 
-
-plt.figure(figsize=(22,8))
-plt.title("Porównanie wartości względem umiejętności", fontsize=20)
-ac = sea.barplot(x='age',y='value_eur', data=df.sort_values('value_eur'), color='steelblue')
-plt.xlabel("Wiek", fontsize=16)
-plt.ylabel("Średnia wartość zawodnika w milionach euro", fontsize=16)
-plt.show()
-
+#
+# plt.figure(figsize=(22,8))
+# plt.title("Porównanie wartości względem umiejętności", fontsize=20)
+# ac = sea.barplot(x='age',y='value_eur', data=df.sort_values('value_eur'), color='steelblue')
+# plt.xlabel("Wiek", fontsize=16)
+# plt.ylabel("Średnia wartość zawodnika w milionach euro", fontsize=16)
+# # plt.show()
+#
 
 
 
@@ -140,7 +145,7 @@ plt.show()
 
 #Diagram przedstawiający kolerację między lepszą nogą a kontrolą nad piłką
 
-
-plt.rcParams['figure.figsize'] = (16, 8)
-sea.lmplot(x = 'skill_ball_control', y = 'dribbling', data = df, col = 'preferred_foot')
-# plt.show()
+#
+# plt.rcParams['figure.figsize'] = (16, 8)
+# sea.lmplot(x = 'skill_ball_control', y = 'dribbling', data = df, col = 'preferred_foot')
+# # plt.show()

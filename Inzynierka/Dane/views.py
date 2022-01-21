@@ -29,8 +29,8 @@ def clubs(request):
 
 
 def roma(request):
-    df = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
-    data = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
+    df = pad.read_csv('static/data/players_20.csv')
+    data = pad.read_csv('static/data/players_20.csv')
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Roma')
@@ -135,8 +135,8 @@ def roma(request):
 
 
 def manchester(request):
-    df = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
-    data = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
+    df = pad.read_csv('static/data/players_20.csv')
+    data = pad.read_csv('static/data/players_20.csv')
 
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
@@ -241,8 +241,8 @@ def manchester(request):
 
 
 def legia(request):
-    df = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
-    data = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
+    df = pad.read_csv('static/data/players_20.csv')
+    data = pad.read_csv('static/data/players_20.csv')
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Legia Warszawa')
@@ -341,11 +341,6 @@ def legia(request):
 
 
 def general(request):
-    # df = pad.read_csv(r'static/data.csv')
-    # df = df.drop('Unnamed: 0', 1)
-    # data = df
-    # data = data.to_html
-
     return render(
         request,
         'Dane/general.html',
@@ -368,63 +363,6 @@ def contact(request):
 
 
 def club_analisys(request):
-    df = pad.read_csv("static/test.csv")
-    html = df.to_html()
-    html = {'html': html}
-    return render(request, 'Dane/clubs.html', html)
 
+    return render(request, 'Dane/clubs.html')
 
-# def club_analisys(request):
-#     df = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
-#
-#     def club(nazwa):
-#         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
-
-
-# def test(request):
-#     df = pad.read_csv("test.csv")
-#
-#     context = {
-#         'test': df
-#     }
-#     return render(request, 'Dane/index.html', context)
-# def mu(request):
-#
-#     """ Stworzenie data frame'u zawierającego statystyki zawodników z gry Fifa 20"""
-#     df = pad.read_csv("static/players_20.csv")
-#     mu= df[df.club == "Manchester United"]
-#     # parsing the DataFrame in json format.
-#     json_records = mu.reset_index().to_json(orient='records')
-#     data = []
-#     data = json.loads(json_records)
-#     contextt = {'d': data}
-#
-#     return render(request, 'Dane/clubs.html', contextt)
-# def test(request):
-#
-#     """ Stworzenie data frame'u zawierającego statystyki zawodników z gry Fifa 20"""
-#     df = pad.read_csv('Users/mbozik/PycharmProjects/Inzynierka/Inzynierka/static/test.csv')
-#     # mu= df[df.club == "Manchester United"]
-#     # parsing the DataFrame in json format.
-#     json_records = df.reset_index().to_json(orient='records')
-#     data = []
-#     data = json.loads(json_records)
-#     contextt = {'d': data}
-#
-#     return render(request, 'Dane/clubs.html', contextt)
-
-# def Table(request):
-#     df = pad.read_csv("static/test.csv")
-#
-#     geeks_object = df.to_html()
-#
-#     return HttpResponse(geeks_object)
-# def table(request):
-#     df = pad.read_csv("test.csv")
-#     test = df.to_html()
-#     return render(request, 'Inzynierka/Dane/templates/Dane/clubs.html', {'table': test})
-
-# def test(request):
-#     df = pad.DataFrame(numpy.random(1,10,(5,3)),columns=["A","B","C"])
-#     test = df.to_html()
-#     return render(request, 'Inzynierka/Dane/templates/Dane/clubs.html', {'table': test})

@@ -1,8 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-import json
 import plotly
-
 """import pyodbc as odbc"""
 import pandas as pad
 import seaborn as sea
@@ -11,16 +7,24 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.express as px
 import matplotlib.pyplot as plt
+pad.set_option('display.max_rows',None)
+pad.set_option('display.max_columns',None)
+pad.set_option('display.width',None)
+import sqlite3
+sea.set_style('darkgrid')
+matplotlib.rcParams['font.size'] = 5
+matplotlib.rcParams['figure.facecolor'] = '#00000000'
+from IPython.display import HTML
 
-df = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
-data = pad.read_csv(r'D:\Studia\Praca inżynierska\players_20.csv')
+df = pad.read_csv (r'../data/players_20.csv')
+data = pad.read_csv (r'../data/players_20.csv')
 
 
 def club(nazwa):
     return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
 
 
-df = club('Paris Saint-Germain')
+df = club('Manchester United')
 
 
 def rename(data):
@@ -57,7 +61,7 @@ def cheapReplacement(player, skillReduction=0):
 
     rename(longlist)
 
-    return longlist
+    return longlist.sort_values("Zarobki")
 
 
 rename(df)
@@ -82,14 +86,15 @@ p2 = cheapReplacement(z2)
 z2 = data[data['short_name'] == z2][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
 rename(z2)
 # z2 = z2.iloc[1]
-
-
+z2 = z2.to_html
+p2 = p2.to_html
 
 z3 = x.iloc[2]
 z3 = z3['Nazwa zawodnika']
 
-p3 = cheapReplacement(z3)
+print(z3)
 
+o3 = cheapReplacement(z3)
 z3 = data[data['short_name'] == z3][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
+rename(o3)
 
-print(p2)

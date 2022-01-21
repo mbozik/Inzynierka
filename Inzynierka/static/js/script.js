@@ -1,27 +1,17 @@
-const counters = document.querySelectorAll('.counter');
-const speed = 100; // The lower the slower
-
+const counters = document.querySelectorAll('.counter'); // Pobranie elementów, których klasa to counter
+const speed = 100; // zmienna speed odpowiada za szybkość liczenia
 counters.forEach(counter => {
 	const updateCount = () => {
 		const target = +counter.getAttribute('data-target');
 		const count = +counter.innerText;
-
-		// Lower inc to slow and higher to slow
 		const inc = target / speed;
-
-		// console.log(inc);
-		// console.log(count);
-
-		// Check if target is reached
+		// Sprawdzenie czy wartość określona w zmiennej target została osiągnięta
 		if (count < target) {
-			// Add inc to count and output in counter
 			counter.innerText = count + 1000;
-			// Call function every ms
-			setTimeout(updateCount, 1);
+			setTimeout(updateCount, 1); //Wywołanie funkcji co 1 milisekundę
 		} else {
 			counter.innerText = target;
 		}
 	};
-
 	updateCount();
 });
