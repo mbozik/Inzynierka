@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: associations
+Version: 0.0.4
+Summary: Assocition management package
+Home-page: https://github.com/pypa/associations
+Author: Hyppoprogramm
+Author-email: programm.jeremiah@yandex.ru
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# Associations
+
+> #### This is an association management package.
+
+## Objects
+
+* ### Classes:  
+	- **Association** (word : str,name : str,method=None,case_sensitive=True,regular=False,**data)  
+		* word - word to create an Association  
+		* name - name of the your Association  
+		* method - method used when searching for assoС‚iations  (in/including/is)
+		* case_sensetive - case-sensetive search  
+		* regular - using regular expressions when searching  
+		* data - data to save  	
+		* Methods:  
+			+ *add*()  
+				> Add self to the list of associations
+
+			+ *getdata*()  
+				> Get the data that was saved when you created it
+
+			+ *getmethod*()  
+				> Get the method that is assigned at creation
+
+			+ *isregular*()  
+				> Checks whether regular expressions are enabled  
+
+			+ *get_case_sensetive*()  
+				> Checks whether register accounting is enabled
+
+			+ *getname*()  
+				> Get the name of this association  
+
+			+ *set_case_sensetive*(state : bool)  
+				> Enables or disables case accounting  
+
+
+* ### Variables:
+	- **Associations**
+		>It is the heir of the inner class "associations"
+
+		* Methods:
+			+ *add*(value : string, name : str,method : str,case_sensitive=True,regular=False,**data)
+				> Create a new association and adds it to the associations list
+
+			+ *add*(value : Association)
+				> Add the association to the associations list
+
+			+ *get*(string : str) -> list
+				> Searches for all associations to the string "string"
+
+***
+
+## Example
+
+```python
+import associations
+associations.Associations.add('hello','Greeting','including')
+print(associations.Associations.get('hello, world!')[0].getname())
+```
+Out:
+>Greeting
+
+

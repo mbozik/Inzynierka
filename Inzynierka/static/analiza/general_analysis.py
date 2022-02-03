@@ -1,9 +1,7 @@
 import matplotlib
-import pandas as pad
 import matplotlib.pyplot as plt
 import pandas as pad
 import seaborn as sea
-import numpy as np
 
 pad.set_option('display.max_rows',None)
 pad.set_option('display.max_columns',None)
@@ -18,21 +16,24 @@ df= pad.read_csv (r"D:\Studia\Praca inżynierska\test\players_20.csv", index_col
 highest_overall_club = df.groupby('Club').Overall.mean().reset_index().sort_values(by='Overall', ascending=False)
 highest_overall_club
 
-
-#Zamiana kilku pozycji zawodnika na jedna wartosc
-# df['Player positions']=df['Player positions'].str.split(pat=',', n=-1, expand=True)[0]
-
 df.fillna(0)
 
-# top10_clubs = highest_overall_club.head(10)
-# plt.figure(figsize = (10,5))
-# sea.barplot(x=top10_clubs.overall, y=top10_clubs['club'], palette='dark')
-# plt.title("Top 10 najlepszych drużyn w Fifie");
+top10_clubs = highest_overall_club.head(10)
+plt.figure(figsize = (10,5))
+sea.barplot(x=top10_clubs.Overall, y=top10_clubs['Club'], palette='dark')
+plt.title("Top 10 najlepszych drużyn w Fifie");
 
 
 #Usunięcie niepotrzebnych kolumn
 df.drop(columns = ['Real Face', 'Loaned From'], inplace = True)
 df.head()
+
+
+VVD = df[df['Name'] == 'V. van Dijk'][['Name','Position','Overall','Age','StandingTackle','SlidingTackle','Marking', 'Interceptions']]
+Messi = df[df['Name'] == 'L. Messi'][['Name','Position','Overall','Age','StandingTackle','SlidingTackle','Marking', 'Interceptions']]
+
+print(VVD)
+print(Messi)
 
 columns = df.columns
 abilities = []
@@ -44,14 +45,26 @@ for i in columns:
 # print(abilities)
 # print(df['players_positions'].value_counts())
 
+def value_split(x):
+    try:
+        if 'M' in x:
+            return float(x.split("M")[0][1:])
+        elif 'K' in x:
+            return float(x.split("K")[0][1:])/1000
+    except:
+        return 0
+
+df['Value'] = df['Value'].apply(lambda x : value_split(x))
+
+
 #Sprawdzenie czy są jakieś brakujące Dane
 missing_data = pad.isna(df.columns).sum()
 missing_data
-print(df.isnull().sum())
+
 matplotlib.rcParams.update({'font.size': 6})
 
-
-
+print(df.head(5))
+print(df.corr())
 
 #Stworzenie heatmapy prezentującej korelacje pomiędzy statystykami zawodników
 plt.figure(figsize = (25, 35))
@@ -62,6 +75,8 @@ plt.show()
 
 matplotlib.rcParams.update({'font.size': 10})
 
+x = df.loc[(df['Overall']<80) & (df['Age']>=30)]
+print(x['Value'].mean())
 
 
 # plt.figure(figsize= (20, 15))
@@ -107,10 +122,17 @@ matplotlib.rcParams.update({'font.size': 10})
 # print(len(df["player_positions"].drop_duplicates()))
 
 # stworzony podział na 4 grupy pozycji
+df.rename(columns={'BallControl': "Kontrola piłki"}, inplace=True)
+df.rename(columns={'Dribbling': "Drybling"}, inplace=True)
+df.rename(columns={'Preferred Foot': "Lepsza Noga"}, inplace=True)
+
+ax=sea.lmplot(x = "Kontrola piłki", y = "Drybling", data = df,col = "Lepsza Noga",scatter_kws = {'alpha':0.1,'color':'grey'},
+           line_kws={'color':'black'})
+plt.show()
 
 
 
-df["value_eur"]=(df["value_eur"]/1e6).round(2)
+# df["value_eur"]=(df["value_eur"]/1e6).round(2)
 
 # # Wykres wartości względem pozycji na boisku
 # plt.figure(figsize=(22,8))

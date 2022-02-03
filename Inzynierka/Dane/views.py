@@ -15,13 +15,12 @@ def home(request):
         }
                   )
 
-
 def clubs(request):
 
 
     return render(
         request,
-        'Dane/clubs.html',
+        'Dane/druzyny.html',
         {
             'title': "Clubs",
         }
@@ -31,6 +30,8 @@ def clubs(request):
 def roma(request):
     df = pad.read_csv('static/data/players_20.csv')
     data = pad.read_csv('static/data/players_20.csv')
+
+    df['player_positions']=df['player_positions'].str.split(pat=',', n=-1, expand=True)[0]
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Roma')
@@ -110,12 +111,12 @@ def roma(request):
     p3=p3.to_html
 
     roma = pad.read_csv('static/data/roma.csv')
-    roma.rename(columns={'actual_value': 'Rzeczywista wartość'}, inplace=True)
-    roma.rename(columns={'Model prediction': 'Przewidywana wartość'}, inplace=True)
+    roma.rename(columns={"actual_value": "Aktualna wartość"}, inplace=True)
+    roma.rename(columns={'value_predict': 'Przewidywana wartość'}, inplace=True)
+    roma.rename(columns={'difference': 'Różnica'}, inplace=True)
     rename(roma)
     roma = roma.sort_values('Zarobki', ascending=False)
     roma = roma.to_html
-
     html = df.sort_values("Zarobki", ascending = False).to_html
     return render(
         request,
@@ -137,7 +138,7 @@ def roma(request):
 def manchester(request):
     df = pad.read_csv('static/data/players_20.csv')
     data = pad.read_csv('static/data/players_20.csv')
-
+    df['player_positions'] = df['player_positions'].str.split(pat=',', n=-1, expand=True)[0]
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Manchester City')
@@ -186,7 +187,6 @@ def manchester(request):
 
     z=z['Nazwa zawodnika']
 
-
     p=cheapReplacement(z,4)
 
     z = data[data['short_name'] == z][  ['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
@@ -219,7 +219,9 @@ def manchester(request):
     mc = pad.read_csv('static\data\mc.csv')
     rename(mc)
     mc = mc.sort_values('Zarobki', ascending=False)
-
+    mc.rename(columns={'value_predict': 'Przewidywana wartość'}, inplace=True)
+    mc.rename(columns={'difference': 'Różnica'}, inplace=True)
+    mc.rename(columns={"actual_value": "Aktualna wartość"}, inplace=True)
     mc = mc.to_html
 
     html = df.sort_values("Zarobki", ascending = False).to_html
@@ -243,6 +245,7 @@ def manchester(request):
 def legia(request):
     df = pad.read_csv('static/data/players_20.csv')
     data = pad.read_csv('static/data/players_20.csv')
+    df['player_positions'] = df['player_positions'].str.split(pat=',', n=-1, expand=True)[0]
     def club(nazwa):
         return df[df['club'] == nazwa][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     df = club('Legia Warszawa')
@@ -292,11 +295,13 @@ def legia(request):
 
     legia  = pad.read_csv('static\data\legia.csv')
     legia = legia.sort_values('Zarobki', ascending=False)
+    legia.rename(columns={'value_predict': 'Przewidywana wartość'}, inplace=True)
+    legia.rename(columns={'difference': 'Różnica'}, inplace=True)
+    legia.rename(columns={"actual_value": "Aktualna wartość"},inplace=True)
     rename(legia)
     legia=legia.to_html
 
     p=cheapReplacement(z)
-
     z = data[data['short_name'] == z][  ['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     # z = z.iloc[0]
     rename(z)
@@ -317,7 +322,7 @@ def legia(request):
     z3 = z3['Nazwa zawodnika']
 
     p3 = cheapReplacement(z3)
-    z3 = data[data['short_name'] == z3][  ['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
+    z3 = data[data['short_name'] == z3][['short_name', 'wage_eur', 'value_eur', 'player_positions', 'overall', 'age']]
     rename(z3)
     z3=z3.to_html
     p3=p3.to_html
@@ -335,7 +340,7 @@ def legia(request):
             'p2': p2,
             'z3': z3,
             'p3': p3,
-            'legia' : legia,
+            'legia': legia,
         }
     )
 

@@ -7,7 +7,7 @@
 {% block content  %}
 
 <div id="gen_head" style="margin-bottom:0.5%;" ><h2>AS Roma</h2><p><!--Lista zawodników oraz spider plot--></p></div>
-<div style="    height: 575px; margin: 0 auto; width: 80%; margin-bottom: 1%;"><div id="clubs_main_le">
+<div id="d_klub3"><div id="clubs_main_le">
   {{ html|safe }}
 </div>
    <div id="clubs_main_down">  <img src="{% static 'images/le.png' %}"></img> <div id="club_sp_d"><p>Spider plot statystyk drużyny AS Roma</p>
@@ -26,7 +26,7 @@
        </div>   <div id="club_pred"><p style="text-align:justify;">Następnie dzięki stworzonemu modelowi predykcji, próbujemy przewidzieć wartość zawodników na podstawie ich umiejętności. <br>Poniżej widzimy liste zawodników AS Romy z obliczonymi przewidywanymi wartościami zawodników</p>
       {{ roma|safe }}</div></div>
 
-    <div style="height:25px;"><hr></div>
+    <div id="sus"><hr></div>
 
 {% endblock %}
 

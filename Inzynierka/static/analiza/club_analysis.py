@@ -1,25 +1,16 @@
-import plotly
-"""import pyodbc as odbc"""
 import pandas as pad
 import seaborn as sea
 import matplotlib
-import matplotlib.pyplot as plt
-import plotly.graph_objects as go
 import plotly.express as px
-import matplotlib.pyplot as plt
 pad.set_option('display.max_rows',None)
 pad.set_option('display.max_columns',None)
 pad.set_option('display.width',None)
-import sqlite3
 sea.set_style('darkgrid')
 matplotlib.rcParams['font.size'] = 5
 matplotlib.rcParams['figure.facecolor'] = '#00000000'
-from IPython.display import HTML
 
 """ Stworzenie data frame'u zawierającego statystyki zawodników z gry Fifa 20"""
 df = pad.read_csv (r'../data/players_20.csv')
-
-
 
 columns = df.columns
 abilities = []
@@ -39,7 +30,6 @@ for i in values.columns:
     df[i].fillna(df[i].mean(),inplace = True)
 # Plot dla wzrostu
 
-
 # sea.pairplot(df[['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physic']])
 # plt.show()
 # print(df.isnull().sum())
@@ -57,35 +47,22 @@ DDGPos = DDG['player_positions'].item()
 DDGRating = DDG['overall'].item()
 DDGAge = DDG['age'].item()
 
-#Wpisanie do MU wszystkich zawodników manchesteru united
-MU = df[df.club == "Roma"]
-print(MU)
 
 
-MU_firstEleven = MU.loc[MU['player_positions']!='RES']
-#Wypisanie pomocników z głównej jedenastki Manchesteru United
-MU_goalkeapers = MU_firstEleven[MU_firstEleven['player_positions'].str.contains('GK')]
-print(MU_goalkeapers)
-#Wypisanie obrońców z głównej jedenastki Manchesteru United
-MU_defenders = MU_firstEleven[MU_firstEleven['player_positions'].str.contains('B')]
-print(MU_defenders)
+Roma = df[df.club == "Roma"]
 
-#Wypisanie pomocników z głównej jedenastki Manchesteru United
-MU_midfielders = MU_firstEleven[MU_firstEleven['player_positions'].str.contains('M')]
-print(MU_midfielders)
+R_first = Roma.loc[Roma['player_positions']!='RES']
 
-#Wypisanie napastników z głównej jedenastki Manchesteru United
+R_goalk = R_first[R_first['player_positions'].str.contains('GK')]
+R_def = R_first[R_first['player_positions'].str.contains('B')]
+R_mid = R_first[R_first['player_positions'].str.contains('M')]
 searchfor = ['ST', 'LW', 'RW','LM','RM','CF']
+R_at = R_first[R_first['player_positions'].str.contains('|'.join(searchfor))]
 
-MU_attackers = MU_firstEleven[MU_firstEleven['player_positions'].str.contains('|'.join(searchfor))]
+val_d = pad.DataFrame(R_first)
+val_d = R_first['defending'].sum()
+mean_defending = val_d/R_first['defending'].size
 
-print(MU_attackers)
-
-#Obliczenie średniej szybkości zawodników Manchesteru United
-val_d = pad.DataFrame(MU_firstEleven)
-val_d = MU_firstEleven['defending'].sum()
-mean_defending = val_d/MU_firstEleven['defending'].size
-# print(mean_defending)
 
 def potential(dane):
     val_p = pad.DataFrame(dane)
@@ -99,12 +76,12 @@ def overall(dane):
     mean_overall = val_o / dane['overall'].size
     return mean_overall
 
-a=overall(MU)
-b=overall(MU_attackers)
-c=overall(MU_defenders)
-d=overall(MU_midfielders)
-e=overall(MU_goalkeapers)
-f=potential(MU_firstEleven)
+a=overall(Roma)
+b=overall(R_at)
+c=overall(R_def)
+d=overall(R_mid)
+e=overall(R_goalk)
+f=potential(R_first)
 
 df = pad.DataFrame(dict(
     r=[a, b, c, d, e, f],
@@ -128,8 +105,10 @@ fig.update_layout(
 
 fig.show()
 
-print("Original DataFrame :")
-display(MU)
+
+
+print("Skład Romy :")
+print(Roma)
 
 # # Wykres wzrost względem przyśpieszenie
 # plt.figure(figsize=(22,8))

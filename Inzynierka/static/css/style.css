@@ -579,7 +579,7 @@ padding:3%;
     margin:0 auto;
 }
 #gen_text{
-    height: 650px;
+    height:600px;
     margin:0 auto;
     width: 80%;
     margin-top: 2%;
@@ -608,7 +608,7 @@ text-align:center;
     width: 850px;
      height: 480px;
     position: absolute;
-    left: 27%;
+    left: 25%;
     border:solid;
     background-image: url(../images/noga.png);
 }
@@ -617,7 +617,7 @@ text-align:center;
     width: 850px;
      height: 480px;
     position: absolute;
-    left: 27%;
+   left: 25%;
     border:solid;
     background-image: url(../images/noga.png);
 }
@@ -625,7 +625,7 @@ text-align:center;
     width: 850px;
      height: 480px;
     position: absolute;
-    left: 27%;
+  left: 25%;
     border:solid;
     background-image: url(../images/noga.png);
 }
@@ -633,7 +633,7 @@ text-align:center;
     width: 850px;
      height: 480px;
     position: absolute;
-    left: 27%;
+  left: 25%;
     border:solid;
     background-image: url(../images/noga.png);
 }
@@ -641,10 +641,219 @@ text-align:center;
     width: 850px;
      height: 480px;
     position: absolute;
-    left: 27%;
+    left: 25%;
     border:solid;
     background-image: url(../images/noga.png);
 }
 
+#d_klub{
+    height: 575px;
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 1%;
+
+}
+#d_klub2{
+    height: 600px;
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 1%;
+
+}
+#d_klub3{
+    height: 575px;
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 1%;
+}
+#sus{
+height:25px;
+
+}
+@media only screen and (max-width: 1000px) {
+  body {
+
+  }
+  #d_klub{
+height: 508px;
+    margin: 0 auto;
+    width: 98%;
+    margin-bottom: 1%;
+
+}
+
+  #d_klub2{
+height: 600px;
+    margin: 0 auto;
+    width: 98%;
+    margin-bottom: 1%;
+
+}
+
+  #d_klub3{
+height: 580px;
+    margin: 0 auto;
+    width: 98%;
+    margin-bottom: 1%;
+
+}
+#cl_down_d{
+
+    width: 98%;
+    }
+#cl_down_d table{
+   font-size: 13px;
+}
+#cl_1{
+margin-left: 4%;
+}
+#cl_2{
+margin-left: 14%;
+}
+#cl_3{
+margin-left: 4%;
+}
+#club_pred{
+
+    width: 90%;
+    }
+#sus{
+height:55px;
+
+}
+#gen_head{
+
+    width: 31%;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1430px) {
+  body {
+
+  }
+  #d_klub{
+    height: 520px;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    width: 90%;
+}
+
+  #d_klub2{
+    height: 600px;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    width: 92%;
+}
+#clubs_main_down{
+
+margin-top: 8%;}
+
+  #d_klub3{
+    height: 600px;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    width: 92%;
+
+}
+#clubs_main_ba table{
+font-size: 11px;
+}
+#clubs_main_le table{
+font-size: 11px;
+}
+#clubs_main_mu table{
+font-size: 11px;
+}
+#club_pred table{
+    font-size: 11px;}
+#cl_down_d{
+
+    width: 98%;
+    }
+#cl_down_d table{
+   font-size: 12px;
+}
+#cl_1{
+margin-left: 6%;
+}
+#cl_2{
+margin-left: 16%;
+}
+#cl_3{
+margin-left: 6%;
+}
+#club_pred{
+width: 70%;
+    font-size: 13px;
+    }
+#sus{
+height:55px;
+
+}
+#cl_down p{
+
+    font-size: 12px;
+    }
+#gen_head{
+
+    width: 31%;
+    }
+}
 
 
+
+@media only screen and (min-width: 1400px) {
+  body {
+
+  }
+  #d_klub{
+    height: 518px;
+    margin: 0 auto;
+    width: 84%;
+    margin-bottom: 1%;
+
+}
+
+  #d_klub2{
+height: 600px;
+    margin: 0 auto;
+    width: 98%;
+    margin-bottom: 1%;
+
+}
+
+  #d_klub3{
+height: 580px;
+    margin: 0 auto;
+    width: 98%;
+    margin-bottom: 1%;
+
+}
+#cl_down_d{
+
+    width: 98%;
+    }
+#cl_down_d table{
+   font-size: 16px;
+}
+#cl_1{
+margin-left: 6%;
+}
+#cl_2{
+margin-left: 20%;
+}
+#cl_3{
+margin-left: 6%;
+}
+#club_pred{
+
+    width: 68%;
+    }
+#sus{
+height:55px;
+
+}
+#gen_head{
+
+    width: 31%;
+    }
+}
